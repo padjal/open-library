@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "e7827142-5117-4ea1-87a9-f5df971ab3a2": {
+      "ProjectGuid": "e7827142-5117-4ea1-87a9-f5df971ab3a2",
+      "DisplayName": "OpenLibrary.Presentation",
+      "ColorIndex": 0
+    },
+    "d61db1a1-2cd4-495d-bf1f-75c1e574ffb1": {
+      "ProjectGuid": "d61db1a1-2cd4-495d-bf1f-75c1e574ffb1",
+      "DisplayName": "OpenLibrary.Core",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
