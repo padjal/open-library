@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenLibrary.Presentation", "OpenLibrary.Presentation\OpenLibrary.Presentation.csproj", "{E7827142-5117-4EA1-87A9-F5DF971AB3A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenLibrary.Presentation", "OpenLibrary.Presentation\OpenLibrary.Presentation.csproj", "{E7827142-5117-4EA1-87A9-F5DF971AB3A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenLibrary.Core", "OpenLibrary.Core\OpenLibrary.Core.csproj", "{D61DB1A1-2CD4-495D-BF1F-75C1E574FFB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenLibrary.Core", "OpenLibrary.Core\OpenLibrary.Core.csproj", "{D61DB1A1-2CD4-495D-BF1F-75C1E574FFB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenLibrary.UnitTests", "OpenLibrary.UnitTests\OpenLibrary.UnitTests.csproj", "{7EE5476E-8AAA-4B85-9586-311AA4CB39F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{D61DB1A1-2CD4-495D-BF1F-75C1E574FFB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D61DB1A1-2CD4-495D-BF1F-75C1E574FFB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D61DB1A1-2CD4-495D-BF1F-75C1E574FFB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EE5476E-8AAA-4B85-9586-311AA4CB39F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EE5476E-8AAA-4B85-9586-311AA4CB39F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EE5476E-8AAA-4B85-9586-311AA4CB39F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EE5476E-8AAA-4B85-9586-311AA4CB39F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
