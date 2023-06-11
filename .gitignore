@@ -3,6 +3,7 @@
 
 # Visual studio
 .vs/
+*.vs/
 
 # User-specific files
 *.suo
