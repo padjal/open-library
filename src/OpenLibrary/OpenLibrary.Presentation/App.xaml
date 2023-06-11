@@ -2,8 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:viewModels="clr-namespace:OpenLibrary.Presentation.ViewModels"
-             xmlns:views="clr-namespace:OpenLibrary.Presentation.Views">
+             xmlns:views="clr-namespace:OpenLibrary.Presentation.Views"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
     <Application.Resources>
-       
     </Application.Resources>
 </Application>

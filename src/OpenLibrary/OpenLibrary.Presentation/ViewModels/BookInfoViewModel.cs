@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Navigation;
+using OpenLibrary.Core.Models;
 using OpenLibrary.Presentation.Core;
 using OpenLibrary.Presentation.Interfaces;
 using OpenLibrary.Presentation.Services;
@@ -15,6 +16,7 @@ namespace OpenLibrary.Presentation.ViewModels
     public class BookInfoViewModel : ViewModelBase
     {
         private INavigationService _navigationService;
+        private Book _book;
 
         public BookInfoViewModel(INavigationService navigationService)
         {
@@ -24,11 +26,13 @@ namespace OpenLibrary.Presentation.ViewModels
         public INavigationService NavigationService
         {
             get => _navigationService;
-            set
-            {
-                _navigationService = value;
-                OnPropertyChanged();
-            }
+            set => SetField(ref _navigationService, value);
+        }
+
+        public Book Book 
+        {
+            get => _book;
+            set => SetField(ref _book, value);
         }
 
         public ICommand NavigateSearchCommand =>

@@ -1,15 +1,73 @@
 ﻿<UserControl x:Class="OpenLibrary.Presentation.Views.SearchView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:OpenLibrary.Presentation.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="Aqua">
-    <Grid>
-        <Label Content="Search view model text"></Label>
-        <Button Height="50" Content="Go to info" Command="{Binding NavigateBookInfoCommand}"></Button>
-    </Grid>
+             Background="White">
+
+    <StackPanel Orientation="Vertical">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal"
+                        Grid.Column="0">
+                <Label Content="Search by Title"
+                       VerticalAlignment="Center"/>
+                <TextBox Width="220"
+                         Height="20"
+                         Text="{Binding SearchTitle}">
+                    <behaviors:Interaction.Triggers>
+                        <behaviors:EventTrigger EventName="GotFocus">
+                            <behaviors:InvokeCommandAction Command="{Binding AfterSearchTitleUpdated}"/>
+                        </behaviors:EventTrigger>
+                    </behaviors:Interaction.Triggers>
+                </TextBox>
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal"
+                        Grid.Column="1">
+                <Label Content="Search by Author"
+                       VerticalAlignment="Center"/>
+                <TextBox Width="150"
+                         Height="20"
+                         Text="{Binding SearchAuthor}">
+                    <behaviors:Interaction.Triggers>
+                        <behaviors:EventTrigger EventName="GotFocus">
+                            <behaviors:InvokeCommandAction Command="{Binding AfterSearchAuthorUpdated}"/>
+                        </behaviors:EventTrigger>
+                    </behaviors:Interaction.Triggers>
+                </TextBox>
+            </StackPanel>
+
+            <Button Grid.Column="2"
+                    Content="Search"
+                    Background="#413f3f"
+                    Foreground="White"
+                    Padding="10"
+                    Width="120"/>
+        </Grid>
+
+        <ListView ItemsSource="{Binding Books}"
+                  SelectedItem="{Binding SelectedBook}"
+                  Margin="0 10 0 0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Book 1"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Label Content="345 results loaded in 2.33 seconds"/>
+    </StackPanel>
     
 </UserControl>
