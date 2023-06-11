@@ -7,9 +7,12 @@
         xmlns:viewmodels = "clr-namespace:OpenLibrary.Presentation.ViewModels"
         xmlns:views="clr-namespace:OpenLibrary.Presentation.Views"
         mc:Ignorable="d"
-        Title="MainView" Height="450" Width="800">
+        Title="Open Library" Height="450" Width="800"
+        MinHeight="300" MinWidth="500">
     <Grid>
-       <ContentControl Grid.Column="1" Content="{Binding NavigationService.CurrentViewModel }">
+       <ContentControl Grid.Column="1" 
+                       Margin="10"
+                       Content="{Binding NavigationService.CurrentViewModel }">
             <ContentControl.Resources>
                 <DataTemplate DataType="{x:Type viewmodels:SearchViewModel}">
                     <views:SearchView/>
