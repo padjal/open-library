@@ -12,15 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using OpenLibrary.Presentation.ViewModels;
 
-namespace OpenLibrary.Presentation
+namespace OpenLibrary.Presentation.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for BookInfoView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class BookInfoView : UserControl
     {
-        public MainWindow()
+        public BookInfoView()
         {
             InitializeComponent();
         }
