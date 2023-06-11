@@ -9,8 +9,13 @@
              d:DesignHeight="450" d:DesignWidth="800"
              Background="White">
 
-    <StackPanel Orientation="Vertical">
-        <Grid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -53,21 +58,35 @@
                     Background="#413f3f"
                     Foreground="White"
                     Padding="10"
-                    Width="120"/>
+                    Width="120"
+                    Command="{Binding SearchCommand}"/>
         </Grid>
 
         <ListView ItemsSource="{Binding Books}"
                   SelectedItem="{Binding SelectedBook}"
-                  Margin="0 10 0 0">
+                  Margin="0 10 0 0"
+                  ScrollViewer.CanContentScroll="True"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  Grid.Row="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="Book 1"/>
-                    </StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Content="{Binding Title}"
+                               FontWeight="Bold"
+                               Grid.Column="0"/>
+                        <Label Content="{Binding Author}"
+                               Grid.Column="1"/>
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Label Content="345 results loaded in 2.33 seconds"/>
-    </StackPanel>
+        <Label Content="{Binding ResultLabel}"
+               Grid.Row="2"/>
+    </Grid>
     
 </UserControl>

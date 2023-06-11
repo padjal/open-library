@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OpenLibrary.Core.Interfaces;
+using OpenLibrary.Core.Services;
 using OpenLibrary.Presentation.Interfaces;
 using OpenLibrary.Presentation.Services;
 using OpenLibrary.Presentation.ViewModels;
@@ -28,6 +31,7 @@ namespace OpenLibrary.Presentation
                 {
                     //Services
                     services.AddSingleton<INavigationService, NavigationService>();
+                    services.AddSingleton<IBookService, BookService>();
                     services.AddSingleton<Func<Type, ViewModelBase>>(serviceProvider =>
                         viewModelType => (ViewModelBase)serviceProvider.GetRequiredService(viewModelType));
 
@@ -40,6 +44,13 @@ namespace OpenLibrary.Presentation
                     services.AddSingleton<MainView>(serviceProvider => new MainView()
                     {
                         DataContext = serviceProvider.GetRequiredService<MainViewModel>()
+                    });
+
+                    services.AddHttpClient<IBookService, BookService>(client =>
+                    {
+                        client.BaseAddress = new Uri("https://openlibrary.org/search.json");
+                        client.DefaultRequestHeaders.Accept.Add(
+                            new MediaTypeWithQualityHeaderValue("application/json"));
                     });
                 })
                 .Build();
