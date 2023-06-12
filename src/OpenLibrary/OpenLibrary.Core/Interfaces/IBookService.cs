@@ -1,4 +1,5 @@
 ﻿using OpenLibrary.Core.Models;
+using OpenLibrary.Core.Exceptions;
 
 namespace OpenLibrary.Core.Interfaces
 {
@@ -9,6 +10,7 @@ namespace OpenLibrary.Core.Interfaces
         /// </summary>
         /// <param name="author">The search query for the author.</param>
         /// <returns>A collection of books written by the Author. Empty collection if none are found.</returns>
+        /// <exception cref="HostException">When there are problems connecting to the host</exception>
         Task<List<Book>> GetBooksByAuthorAsync(string author);
 
         /// <summary>

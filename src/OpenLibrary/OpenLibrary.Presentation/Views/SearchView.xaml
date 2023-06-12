@@ -86,7 +86,7 @@
             </ListView.ItemTemplate>
         </ListView>
         <Label Content="{Binding ResultLabel}"
-               Grid.Row="2"/>
+               Grid.Row="2"/>        
     </Grid>
     
 </UserControl>
