@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using OpenLibrary.Core.Exceptions;
 using OpenLibrary.Core.Interfaces;
 using OpenLibrary.Core.Models;
 using OpenLibrary.Presentation.Core;
@@ -62,27 +63,6 @@ namespace OpenLibrary.Presentation.ViewModels
             set => SetField(ref _books, value);
         }
 
-        /*= new ObservableCollection<Book>
-        {
-            //TODO: Remove. Used only for development
-            new Book
-            {
-                Title = "Oliver Twist",
-                Author = "Charles Dikens",
-                PageCount = 678,
-                Isbn = "SDFKSDJFO90808DFSF",
-                PublishedYear = 2005,
-            },
-            new Book
-            {
-                Title = "Oliver Twist 2",
-                Author = "Charles Dikens",
-                PageCount = 678,
-                Isbn = "SDFKSDJFO90808DFSF",
-                PublishedYear = 2004,
-            }
-        };*/
-
         public Book SelectedBook
         {
             get => _selectedBook;
@@ -123,21 +103,51 @@ namespace OpenLibrary.Presentation.ViewModels
                 var timer = new Stopwatch();
                 timer.Start();
 
-                //Show busy indicator
-                var result = await _bookService.GetBooksByAuthorAsync(SearchAuthor);
+                try
+                {
+                    var result = await _bookService.GetBooksByAuthorAsync(SearchAuthor);
 
-                Books.Clear();
+                    Books.Clear();
 
-                Books = new ObservableCollection<Book>(result);
+                    Books = new ObservableCollection<Book>(result);
+                }catch (HostException hostException) 
+                {
+                    MessageBox.Show("Service is not reachable at the moment. Please check your connection and try again.\n" +
+                        hostException.Message,
+                        "Service not reachable");
+                }
+                
 
                 timer.Stop();
                 ResultLabel = $"{Books.Count} results found in {timer.Elapsed.TotalMilliseconds} ms";
-                //Disable busyIndicator
+                
 
             }
             else if (!string.IsNullOrEmpty(SearchTitle))
             {
                 //Search by title
+
+                var timer = new Stopwatch();
+                timer.Start();
+
+                try
+                {
+                    var result = await _bookService.GetBooksByTitleAsync(SearchTitle);
+
+                    Books.Clear();
+
+                    Books = new ObservableCollection<Book>(result);
+                }catch (HostException hostException)
+                {
+                    MessageBox.Show("Service is not reachable at the moment. Please check your connection and try again.\n" +
+                        hostException.Message,
+                        "Service not reachable");
+                }
+                
+
+                timer.Stop();
+                ResultLabel = $"{Books.Count} results found in {timer.Elapsed.TotalMilliseconds} ms";
+                //Disable busyIndicator
             }
             else
             {

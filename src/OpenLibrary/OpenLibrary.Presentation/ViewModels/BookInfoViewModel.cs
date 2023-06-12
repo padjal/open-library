@@ -37,5 +37,12 @@ namespace OpenLibrary.Presentation.ViewModels
 
         public ICommand NavigateSearchCommand =>
             new RelayCommand(o => NavigationService.NavigateTo<SearchViewModel>(), o => true);
+
+        public ICommand ImageLoadedCommand => new RelayCommand(o => AfterImageLoaded(), o => true);
+
+        private async Task AfterImageLoaded()
+        {
+
+        }
     }
 }
