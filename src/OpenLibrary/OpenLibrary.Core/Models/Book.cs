@@ -13,8 +13,10 @@ namespace OpenLibrary.Core.Models
 
         public string Isbn { get; set; }
 
-        public int PageCount { get; set; }
+        public string PageCount { get; set; }
 
         public int PublishedYear { get; set; }
+
+        public string CoverImageUrl { get; set; }
     }
 }
